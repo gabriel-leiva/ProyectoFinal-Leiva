@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './ItemListContainer.css'
 import { useNavigate } from 'react-router-dom';
 
-const ItemListContainer = (buscarTermino) => {
+const ItemListContainer = ({buscarTermino}) => {
 
     const [productos, setProductos] = useState([]);
     const [error, setError] = useState(null);
@@ -39,13 +39,13 @@ const ItemListContainer = (buscarTermino) => {
         return texto
         .toLowerCase()
         .normalize("NFD")
-        .replace(/[\u300-\u036f]/g, "")
+        .replace(/[\u0300-\u036f]/g, "")
     }
 
     const productosFiltrados = productos.filter((producto) => {
         const matchCategoria = filtros.categorias.length === 0 || filtros.categorias.includes(producto.category);
 
-        const matchBuscar = buscarTermino || normalizarTexto(producto.title).includes(normalizarTexto(buscarTermino)) || normalizarTexto(producto.description).includes(normalizarTexto(buscarTermino))
+        const matchBuscar = !buscarTermino || normalizarTexto(producto.title).includes(normalizarTexto(buscarTermino)) || normalizarTexto(producto.description).includes(normalizarTexto(buscarTermino))
 
         return matchCategoria && matchBuscar;
     })

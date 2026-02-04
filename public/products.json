@@ -1,0 +1,114 @@
+  [
+    {
+    "id": 1,
+    "title": "Laptop Lenovo IdeaPad 3",
+    "price": 750000,
+    "category": "laptops",
+    "description": "Laptop con procesador AMD Ryzen 5, 8 GB de RAM y almacenamiento SSD de 512 GB. Ideal para estudio y trabajo diario.",
+    "image": "../src/assets/imgs/lenovo-ideapad-3.png"
+  },
+  {
+    "id": 2,
+    "title": "Laptop HP Pavilion 15",
+    "price": 920000,
+    "category": "laptops",
+    "description": "Notebook HP con Intel Core i5 de 11ª generación, pantalla Full HD de 15.6 pulgadas y diseño elegante.",
+    "image": "../src/assets/imgs/hp-pavilion-15.png"
+  },
+  {
+    "id": 3,
+    "title": "Laptop ASUS TUF Gaming F15",
+    "price": 1450000,
+    "category": "laptops",
+    "description": "Laptop gamer con Intel Core i7, 16 GB de RAM, SSD de 1 TB y gráfica dedicada para alto rendimiento en juegos.",
+    "image": "../src/assets/imgs/asus-tuf-gaming-f15.png"
+  },
+  {
+    "id": 4,
+    "title": "Laptop Dell XPS 13",
+    "price": 1650000,
+    "category": "laptops",
+    "description": "Laptop premium ultradelgada con Intel Core i7, 16 GB de RAM y pantalla de alta resolución, ideal para profesionales.",
+    "image": "../src/assets/imgs/dell-xps-13.png"
+  },
+  {
+    "id": 5,
+    "title": "Laptop Acer Nitro 5",
+    "price": "1350000",
+    "category": "laptops",
+    "description": "Notebook gamer con procesador AMD Ryzen 7, 16 GB de RAM y sistema de refrigeración optimizado para juegos exigentes.",
+    "image": "../src/assets/imgs/acer-nitro-5.png"
+  },
+  {
+    "id": 6,
+    "title": "Tarjeta Gráfica NVIDIA GeForce RTX 3060",
+    "price": 680000,
+    "category": "tarjetas graficas",
+    "description": "Placa de video con 12 GB de memoria GDDR6, ideal para gaming en 1080p y 1440p con trazado de rayos.",
+    "image": "../src/assets/imgs/nvidia-geforce-rtx-3060.png"
+  },
+  {
+    "id": 7,
+    "title": "Tarjeta Gráfica AMD Radeon RX 6700 XT",
+    "price": 720000,
+    "category": "tarjetas graficas",
+    "description": "Tarjeta gráfica AMD con arquitectura RDNA 2, excelente rendimiento en juegos modernos y creación de contenido.",
+    "image": "../src/assets/imgs/amd-radeon-rx-6700-xt.png"
+  },
+  {
+    "id": 8,
+    "title": "Tarjeta Gráfica NVIDIA GeForce GTX 1660 Super",
+    "price": 480000,
+    "category": "tarjetas graficas",
+    "description": "Placa de video confiable para gaming en Full HD, con buen rendimiento y bajo consumo energético.",
+    "image": "../src/assets/imgs/nvidia-geforce-gtx-1660-super.png"
+  },
+  {
+    "id": 9,
+    "title": "Tarjeta Gráfica NVIDIA GeForce RTX 4070",
+    "price": 980000,
+    "category": "tarjetas graficas",
+    "description": "Tarjeta gráfica de última generación con excelente rendimiento en 1440p y soporte avanzado de trazado de rayos.",
+    "image": "../src/assets/imgs/nvidia-geforce-rtx-4070.png"
+  },
+  {
+    "id": 10,
+    "title": "Tarjeta Gráfica AMD Radeon RX 7600",
+    "price": 520000,
+    "category": "tarjetas graficas",
+    "description": "Placa de video moderna con arquitectura RDNA 3, ideal para gaming en Full HD con bajo consumo energético.",
+    "image": "../src/assets/imgs/amd-radeon-rx-7600.png"
+  },
+  {
+    "id": 11,
+    "title": "Tarjeta Gráfica NVIDIA GeForce RTX 4090",
+    "price": 1850000,
+    "category": "tarjetas graficas",
+    "description": "Tarjeta gráfica de gama alta diseñada para gaming extremo y trabajos profesionales de renderizado y simulación.",
+    "image": "../src/assets/imgs/nvidia-geforce-rtx-4090.png"
+  },
+  {
+    "id": 12,
+    "title": "Monitor Samsung 24 pulgadas Full HD",
+    "price": 180000,
+    "category": "monitores",
+    "description": "Monitor LED de 24 pulgadas con resolución Full HD, ideal para trabajo, estudio y entretenimiento.",
+    "image": "../src/assets/imgs/monitor-samsung-24-pulgadas-full-hd.png"
+  },
+  {
+    "id": 13,
+    "title": "Monitor LG UltraGear 27 pulgadas 144Hz",
+    "price": 320000,
+    "category": "monitores",
+    "description": "Monitor gamer con panel IPS, 144Hz de frecuencia de actualización y tiempo de respuesta rápido.",
+    "image": "../src/assets/imgs/monitor-lg-ultragear-27-pulgadas-144hz.png"
+  },
+  {
+    "id": 14,
+    "title": "Monitor ASUS ProArt 27 pulgadas 2K",
+    "price": 410000,
+    "category": "monitores",
+    "description": "Monitor profesional con alta fidelidad de color, ideal para diseño gráfico y edición de video.",
+    "image": "../src/assets/imgs/monitor-asus-proart-27-pulgadas-2k.png"
+  }
+]

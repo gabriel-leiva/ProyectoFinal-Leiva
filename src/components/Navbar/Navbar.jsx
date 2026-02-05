@@ -1,15 +1,21 @@
 import React from 'react'
 import './Navbar.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useCart } from '../../context/CartContext'
 
-const NavBar = () => {
+const NavBar = ({alternarBuscador}) => {
     const{carrito} = useCart();
+
+    const navigate = useNavigate();
+
     const totalProductos = carrito.reduce((acc, producto) => 
         acc + producto.cantidad, 0
     )
 
-    
+    const handleHome = () => {
+        alternarBuscador();
+        navigate('/')
+    }
 
   return (
     <header className='header'>
@@ -23,7 +29,7 @@ const NavBar = () => {
         </nav>
 
         <div className='icons'>
-            <button className='search-button'>
+            <button className='search-button' onClick={handleHome}>
                 <i className='fas fa-search'></i>
             </button>
 

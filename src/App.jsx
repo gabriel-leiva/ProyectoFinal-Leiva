@@ -12,17 +12,24 @@ import Search from './components/Search/Search'
 const App = () => {
 
   const [buscarTermino, setBuscarTermino] = useState("");
+
+  const [mostrarBuscador, setMostrarBuscador] = useState(false)
+
   const handleBuscar = (termino) => {
     setBuscarTermino(termino.toLoweCase())
+  }
+
+  const alternarBuscador = () => {
+    setMostrarBuscador(!mostrarBuscador)
   }
 
   return (
     <>
       <CartProvider>
         <Router>
-          <NavBar/>
+          <NavBar alternarBuscador = {alternarBuscador}/>
           <Routes>
-            <Route path='/' element={<Home buscarTermino = {buscarTermino}/>}/>
+            <Route path='/' element={<Home buscarTermino = {buscarTermino} mostrarBuscador = {mostrarBuscador}/>}/>
             <Route path='/producto/:id' element={<ItemDetailContainer/>}/>
             <Route path='/carrito' element={<Cart/>}/>
             <Route path='/search' element={<Search onSearch = {handleBuscar}/>}/>

@@ -34,7 +34,7 @@
   {
     "id": 5,
     "title": "Laptop Acer Nitro 5",
-    "price": "1350000",
+    "price": 1350000,
     "category": "laptops",
     "description": "Notebook gamer con procesador AMD Ryzen 7, 16 GB de RAM y sistema de refrigeración optimizado para juegos exigentes.",
     "image": "../src/assets/imgs/acer-nitro-5.png"

@@ -1,80 +1,35 @@
-import React, { useEffect, useState } from 'react'
-import './ItemDetailContainer.css'
-import { useParams} from 'react-router-dom'
-import { formatCurrency } from "../../utils/formatCurrency";
-import { useCart } from '../../context/CartContext';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../data/firestore";
+import ItemDetail from "../ItemDetail/ItemDetail";
 
 const ItemDetailContainer = () => {
-    const {id} = useParams();
-    const [producto, setProducto] = useState(null);
-    const [error, setError] = useState(null);
+  const { id } = useParams();
+  const [producto, setProducto] = useState(null);
+  const [error, setError] = useState(null);
 
-    const {agregarAlCarrito} = useCart();
-    const handleAgregarAlCarrito = () => {
-        if(producto){
-            agregarAlCarrito({
-                id: producto.id,
-                imagen: producto.image,
-                nombre: producto.title,
-                precio: producto.price,
-                cantidad: 1
-            })
-        }
-    }
- 
-    useEffect(() => {
+  useEffect(() => {
     const fetchProducto = async () => {
-        try {
-            const docRef = doc(db, "products", id);
-            const docSnap = await getDoc(docRef);
+      try {
+        const docRef = doc(db, "products", id);
+        const docSnap = await getDoc(docRef);
 
-            if (!docSnap.exists()) {
-                throw new Error("Producto no encontrado");
-            }
+        if (!docSnap.exists()) throw new Error("Producto no encontrado");
 
-            setProducto({
-                id: docSnap.id,
-                ...docSnap.data()
-            });
-
-        } catch (err) {
-            setError("Error al cargar el producto desde Firestore");
-            console.error(err);
-        }
+        setProducto({ id: docSnap.id, ...docSnap.data() });
+      } catch (err) {
+        setError("Error al cargar el producto");
+      }
     };
 
     fetchProducto();
-}, [id]);
+  }, [id]);
 
-    if(error){
-        return <h2 className='error-message'>{error}</h2>
-    }
+  if (error) return <h2>{error}</h2>;
+  if (!producto) return <p>Cargando...</p>;
 
-    
+  return <ItemDetail producto={producto} />;
+};
 
-  return (
-    <div className="product-details">
-        {
-            producto ? (
-                <>
-                    <img src={producto.image} alt={producto.title}/>
-                    <div className='product-infos'>
-                        <h1>{producto.title}</h1>
-                        <p className='price'>{formatCurrency(producto.price)}</p>
-                        <p className='description'>{producto.description}</p>
-                        <button className='add-to-cart' onClick={handleAgregarAlCarrito}>Añadir al carrito</button>
-                    </div>
-
-                
-                </>
-            ) : (
-                <p>Cargando Producto...</p>
-            )
-        }
-    </div>
-  )
-}
-
-export default ItemDetailContainer
+export default ItemDetailContainer;

@@ -82,11 +82,14 @@
     color: #9893fb;
 }
 
-.cart-summary{
-    margin-top: 20px;
-    width: 35%;
-    margin-left: auto;
-    text-align: left;
+.cart-summary {
+  max-width: 400px;
+  margin: 40px auto 0 auto; /* 👈 esto lo centra horizontalmente */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fafafa;
+  text-align: center;
 }
 
 .cart-summary h2{

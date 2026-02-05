@@ -3,6 +3,8 @@ import './ItemDetailContainer.css'
 import { useParams} from 'react-router-dom'
 import { formatCurrency } from "../../utils/formatCurrency";
 import { useCart } from '../../context/CartContext';
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../data/firestore";
 
 const ItemDetailContainer = () => {
     const {id} = useParams();
@@ -23,29 +25,28 @@ const ItemDetailContainer = () => {
     }
  
     useEffect(() => {
-        const fetchProducto = async () => {
-            try {
-                const response = await fetch("/products.json")
-                if(!response.ok) {
-                    throw new Error("Error al cargar los detalles del producto")
-                }
-                const data = await response.json();
-                const productoEncontrado = data.find(
-                        (item) => item.id === Number(id)
-                )
+    const fetchProducto = async () => {
+        try {
+            const docRef = doc(db, "products", id);
+            const docSnap = await getDoc(docRef);
 
-                if (!productoEncontrado) {
-                throw new Error("Producto no encontrado")
-                }
-
-                setProducto(productoEncontrado)
-
-            } catch (err) {
-                setError(err.message)
+            if (!docSnap.exists()) {
+                throw new Error("Producto no encontrado");
             }
-        };
-        fetchProducto();
-    }, [id])
+
+            setProducto({
+                id: docSnap.id,
+                ...docSnap.data()
+            });
+
+        } catch (err) {
+            setError("Error al cargar el producto desde Firestore");
+            console.error(err);
+        }
+    };
+
+    fetchProducto();
+}, [id]);
 
     if(error){
         return <h2 className='error-message'>{error}</h2>

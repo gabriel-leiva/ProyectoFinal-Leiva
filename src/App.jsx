@@ -5,38 +5,40 @@ import NavBar from './components/NavBar/NavBar'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
 import { CartProvider } from './context/CartContext'
 import Cart from './components/Cart/Cart'
-import Search from './components/Search/Search'
-
-
 
 const App = () => {
 
   const [buscarTermino, setBuscarTermino] = useState("");
-
-  const [mostrarBuscador, setMostrarBuscador] = useState(false)
+  const [mostrarBuscador, setMostrarBuscador] = useState(false);
 
   const handleBuscar = (termino) => {
-    setBuscarTermino(termino.toLoweCase())
-  }
+    setBuscarTermino(termino.toLowerCase());
+  };
 
   const alternarBuscador = () => {
-    setMostrarBuscador(!mostrarBuscador)
-  }
+    setMostrarBuscador(prev => !prev);
+  };
 
   return (
-    <>
-      <CartProvider>
-        <Router>
-          <NavBar alternarBuscador = {alternarBuscador}/>
-          <Routes>
-            <Route path='/' element={<Home buscarTermino = {buscarTermino} mostrarBuscador = {mostrarBuscador}/>}/>
-            <Route path='/producto/:id' element={<ItemDetailContainer/>}/>
-            <Route path='/carrito' element={<Cart/>}/>
-            <Route path='/search' element={<Search onSearch = {handleBuscar}/>}/>
-          </Routes>
-        </Router>
-      </CartProvider>
-    </>
+    <CartProvider>
+      <Router>
+        <NavBar alternarBuscador={alternarBuscador} />
+        <Routes>
+          <Route
+            path='/'
+            element={
+              <Home
+                buscarTermino={buscarTermino}
+                mostrarBuscador={mostrarBuscador}
+                onSearch={handleBuscar}
+              />
+            }
+          />
+          <Route path='/producto/:id' element={<ItemDetailContainer />} />
+          <Route path='/carrito' element={<Cart />} />
+        </Routes>
+      </Router>
+    </CartProvider>
   )
 }
 

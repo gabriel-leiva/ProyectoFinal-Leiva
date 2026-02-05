@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './ItemListContainer.css'
 import { useNavigate } from 'react-router-dom';
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../data/firestore";
 
 const ItemListContainer = ({buscarTermino}) => {
 
@@ -11,20 +13,24 @@ const ItemListContainer = ({buscarTermino}) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        const fetchProductos = async () => {
-            try {
-                const response = await fetch("/products.json")
-                if(!response.ok){
-                    throw new Error("Error al cargar los productos")
-                }
-                const data = await response.json()
-                setProductos(data);
-            } catch (err) {
-                setError(err.message)
-            }
+    const fetchProductos = async () => {
+        try {
+            const querySnapshot = await getDocs(collection(db, "products"));
+
+            const productosFirestore = querySnapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+
+            setProductos(productosFirestore);
+        } catch (err) {
+            setError("Error al cargar productos");
+            console.error(err);
         }
-        fetchProductos();
-    }, []);
+    };
+
+    fetchProductos();
+}, []);
 
     const toggleFiltros = (tipoFiltro, valor) => {
         setFiltros((prev) => ({

@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import { useCart } from '../../context/CartContext'
 import './Cart.css'
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
+import { formatCurrency } from '../../utils/formatCurrency';
 
 const Cart = () => {
   const { carrito, actualizarCantidad, eliminarProducto } = useCart();
 
   const [compraRealizada, setCompraRealizada] = useState(false);
 
-  const costoDeEnvio = 10;
+  const costoDeEnvio = 1000;
   const subTotal = carrito.reduce((acc, producto) => acc + producto.precio * producto.cantidad, 0);
   const total = subTotal + costoDeEnvio;
 
@@ -57,7 +58,7 @@ const Cart = () => {
                     <p>{producto.nombre}</p>
                   </div>
 
-                  <p>${producto.precio.toFixed(2)}</p>
+                  <p>{formatCurrency(producto.precio)}</p>
 
                   <div className="quantity-controls">
                     <button
@@ -82,7 +83,7 @@ const Cart = () => {
                     </button>
                   </div>
 
-                  <p>${totalPrecio.toFixed(2)}</p>
+                  <p>{formatCurrency(totalPrecio)}</p>
 
                   <button
                     className="delete-btn"
@@ -98,9 +99,9 @@ const Cart = () => {
           {/* ✅ RESUMEN + FORMULARIO SOLO SI HAY PRODUCTOS */}
           <div className="cart-summary">
             <h2>RESUMEN</h2>
-            <p>Subtotal: <span>${subTotal.toFixed(2)}</span></p>
-            <p>Costo de envio: <span>${costoDeEnvio.toFixed(2)}</span></p>
-            <p className="total">Total: <span>${total.toFixed(2)}</span></p>
+            <p>Subtotal: <span>{formatCurrency(subTotal)}</span></p>
+            <p>Costo de envio: <span>{formatCurrency(costoDeEnvio)}</span></p>
+            <p className="total">Total: <span>{formatCurrency(total)}</span></p>
 
             {/* 👇 AVISA AL CART QUE LA COMPRA TERMINÓ */}
             <CheckoutForm onCompraFinalizada={() => setCompraRealizada(true)} />

@@ -8,7 +8,13 @@ const Home = ({ buscarTermino, mostrarBuscador, onSearch }) => {
   return (
     <>
       {!mostrarBuscador && <Portada />}
-      {mostrarBuscador && <Search onSearch={onSearch} />}
+
+      {mostrarBuscador && (
+        <Search
+          buscarTermino={buscarTermino}
+          onSearch={onSearch}
+        />
+      )}
 
       <ItemListContainer buscarTermino={buscarTermino} />
     </>
@@ -16,3 +22,4 @@ const Home = ({ buscarTermino, mostrarBuscador, onSearch }) => {
 }
 
 export default Home
+

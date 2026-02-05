@@ -1,19 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './Search.css'
 
-const Search = ({onSearch}) => {
+const Search = ({ buscarTermino, onSearch }) => {
 
-    const[buscarTermino, setBuscarTermino] = useState("")
-
-    const handleBuscarChange = (e) => {
-        const termino = e.target.value;
-        setBuscarTermino(termino)
-        onSearch(termino)
-    }
+  const handleBuscarChange = (e) => {
+    onSearch(e.target.value)
+  }
 
   return (
     <section className='search'>
-        <input type="search" placeholder='Buscar' className='search-bar' value={buscarTermino} onChange={handleBuscarChange}/>
+      <input
+        type="search"
+        placeholder='Buscar'
+        className='search-bar'
+        value={buscarTermino}
+        onChange={handleBuscarChange}
+      />
     </section>
   )
 }

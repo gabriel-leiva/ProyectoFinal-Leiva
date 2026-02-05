@@ -1,5 +1,7 @@
 import React from "react";
 import '../ItemListContainer/ItemListContainer.css'
+import '../../utils/formatCurrency'
+import { formatCurrency } from "../../utils/formatCurrency";
 
 const Item = ({ producto, onClick }) => {
   return (
@@ -10,7 +12,7 @@ const Item = ({ producto, onClick }) => {
         className="product-image"
       />
       <h3>{producto.title}</h3>
-      <p>${producto.price}</p>
+      <p>{formatCurrency(producto.price)}</p>
     </div>
   );
 };
